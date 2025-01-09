@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>進学・卒業判定システム</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /*height: 100vh;*/
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        #courseForm {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .course-group {
+            margin: 10px 0;
+        }
+        .course-group label {
+            display: block;
+            margin: 5px 0;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        p {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form id="courseForm">
+        <h1>進学・卒業判定システム</h1>
+        <P>※本システムは参考資料として提供されるものであり、<br>卒業や進級を保証するものではありません。  </P>
+        <label for="department">学部:</label>
+        <input type="text" id="department" name="department" value="キャリアデザイン学部" readonly><br><br>
+        
+        <label for="major">学科:</label>
+        <input type="text" id="major" name="major" value="キャリアデザイン学科" readonly><br><br>
+        
+        <label for="year">学年:</label>
+        <select id="year" name="year">
+            <option value="1">1年生</option>
+            <option value="2">2年生</option>
+            <option value="3">3年生</option>
+            <option value="4">4年生</option>
+        </select>
+
+        <label for="field">領域:</label>
+        <select id="field" name="field">
+            <option value="ビジネス領域">ビジネス</option>
+            <option value="発達・教育領域">発達・教育</option>
+            <option value="ライフ領域">ライフ</option>
+        </select>
+        
+
+        <h2>基礎ゼミ</h2>
+        <label><input type="checkbox" name="requiredCourse" value="基礎ゼミ［2単位］">基礎ゼミ［2単位］</label>
+        
+        <h2>基幹科目</h2>
+        <h2>必修</h2>
+        <div class="course-group">
+            <label><input type="checkbox" name="requiredCourse" value="キャリアデザイン学入門［2単位］">キャリアデザイン学入門［2単位］</label>
+            <label><input type="checkbox" name="requiredCourse" value="キャリア研究調査法入門［2単位］">キャリア研究調査法入門［2単位］</label>
+  
+        <h2>選択必修(キャリア研究調査法)</h2> 
+            <label><input type="checkbox" name="requiredCourse" value="キャリア研究調査法（質的調査）［2単位］"data-group="選択必修(キャリア研究調査法)">キャリア研究調査法（質的調査）［2単位］</label>
+            <label><input type="checkbox" name="requiredCourse" value="キャリア研究調査法（量的調査）［2単位］"data-group="選択必修(キャリア研究調査法)">キャリア研究調査法(量的調査)［2単位］ </label>
+        
+        <h2>選択必修（ビジネス）</h2>
+        <label><input type="checkbox" name="requiredCourse" value="ビジネスキャリア入門A［2単位］"data-group="選択必修（ビジネス）">ビジネスキャリア入門A ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ビジネスキャリア入門B［2単位］"data-group="選択必修（ビジネス）">ビジネスキャリア入門B［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ビジネスキャリア入門C［2単位］"data-group="選択必修（ビジネス）">ビジネスキャリア入門C［2単位］ </label>
+        <label><input type="checkbox" name="requiredCourse" value="ビジネスキャリア入門D［2単位］"data-group="選択必修（ビジネス）">ビジネスキャリア入門D［2単位］ </label>
+
+        <h2>選択必修（発達・教育）</h2>
+        <label><input type="checkbox" name="requiredCourse" value="発達・教育キャリア入門A［2単位］"data-group="選択必修（発達・教育）">発達・教育キャリア入門A［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="発達・教育キャリア入門B［2単位］"data-group="選択必修（発達・教育）">発達・教育キャリア入門B［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="発達・教育キャリア入門C［2単位］"data-group="選択必修（発達・教育）">発達・教育キャリア入門C［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="発達・教育キャリア入門D［2単位］"data-group="選択必修（発達・教育）">発達・教育キャリア入門D［2単位］</label>
+
+        <h2>選択必修（ライフ）</h2>
+        <label><input type="checkbox" name="requiredCourse" value="ライフキャリア入門A［2単位］"data-group="選択必修（ライフ）">ライフキャリア入門A［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ライフキャリア入門B［2単位］"data-group="選択必修（ライフ）">ライフキャリア入門B［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ライフキャリア入門C［2単位］"data-group="選択必修（ライフ）">ライフキャリア入門C［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ライフキャリア入門D［2単位］"data-group="選択必修（ライフ）">ライフキャリア入門D［2単位］</label>
+
+        <h2>選択</h2>
+        <label><input type="checkbox" name="requiredCourse" value="労働法［2単位］"data-group="選択">労働法［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ファシリテーション論［2単位］"data-group="選択">ファシリテーション論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="若者の自立支援"data-group="選択">若者の自立支援［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="職業選択論Ⅰ"data-group="選択">職業選択論Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ライフコース論［2単位］"data-group="選択">ライフコース論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="生活設計論Ⅰ（社会保障）［2単位］"data-group="選択">生活設計論Ⅰ（社会保障）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="生活設計論Ⅱ（生活設計）［2単位］"data-group="選択">生活設計論Ⅱ（生活設計）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="キャリアモデル・ケーススタディ［2単位］"data-group="選択">キャリアモデル・ケーススタディ［2単位］</label>
+
+        <h2>展開科目</h2>
+        <h2>選択必修(体験型)</h2>
+        <label><input type="checkbox" name="requiredCourse" value="キャリアサポート事前指導［2単位］"data-group="選択必修(体験型)">キャリアサポート事前指導［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="キャリアサポート実習［2単位］"data-group="選択必修(体験型)">キャリアサポート実習［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="キャリア体験事前指導(インターン)［2単位］"data-group="選択必修(体験型)">キャリア体験事前指導(インターン)［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="キャリア体験学習(インターン)［2単位］"data-group="選択必修(体験型)">キャリア体験学習(インターン)［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="キャリア体験事前指導(プロジェクト)［2単位］"data-group="選択必修(体験型)">キャリア体験事前指導(プロジェクト)［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="キャリア体験学習(プロジェクト)［2単位］"data-group="選択必修(体験型)">キャリア体験学習(プロジェクト)［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="キャリア体験事前指導（国際）［2単位］"data-group="選択必修(体験型)">キャリア体験事前指導（国際）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="キャリア体験学習(国際)［2単位］"data-group="選択必修(体験型)">キャリア体験学習(国際)［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="メディアリテラシー実習Ⅰ［2単位］"data-group="選択必修(体験型)">メディアリテラシー実習Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="メディアリテラシー実習Ⅱ［2単位］"data-group="選択必修(体験型)">メディアリテラシー実習Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="地域学習支援Ⅰ［2単位］"data-group="選択必修(体験型)">地域学習支援Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="地域学習支援Ⅰ［2単位］"data-group="選択必修(体験型)">地域学習支援Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="多文化教育Ⅰ［2単位］"data-group="選択必修(体験型)">多文化教育Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="職業能力ベーシックスキルⅠ［2単位］"data-group="選択必修(体験型)">職業能力ベーシックスキルⅠ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="職業能力ベーシックスキルⅡ［2単位］"data-group="選択必修(体験型)">職業能力ベーシックスキルⅡ［2単位］</label>
+       
+        <h2>選択必修(領域別)</h2>
+
+        <h2>ビジネス</h2>
+        <label><input type="checkbox" name="requiredCourse" value="キャリア研究調査実習C（データで語るキャリア）［2単位］" data-group="ビジネス">キャリア研究調査実習C（データで語るキャリア）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="キャリア研究調査実習D（仕事とビジネスの質的研究）［2単位］" data-group="ビジネス">キャリア研究調査実習D（仕事とビジネスの質的研究）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="外書講読A（ビジネス）［2単位］" data-group="ビジネス">外書講読A（ビジネス）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="外書講読B（ビジネス）［2単位］" data-group="ビジネス">外書講読B（ビジネス）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="職業選択論Ⅱ［2単位］" data-group="ビジネス">職業選択論Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="人材育成論Ⅰ［2単位］" data-group="ビジネス">人材育成論Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="人材育成論Ⅱ［2単位］" data-group="ビジネス">人材育成論Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="産業・組織心理学Ⅰ［2単位］" data-group="ビジネス">産業・組織心理学Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="産業・組織心理学Ⅱ［2単位］" data-group="ビジネス">産業・組織心理学Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="キャリア開発論［2単位］" data-group="ビジネス">キャリア開発論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="リーダーシップ論［2単位］" data-group="ビジネス">リーダーシップ論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="経営統計論A（心理データ）［2単位］" data-group="ビジネス">経営統計論A（心理データ）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="企業会計論［2単位］" data-group="ビジネス">企業会計論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="経営統計論B（企業データ）［2単位］" data-group="ビジネス">経営統計論B（企業データ）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="経営組織論Ⅰ［2単位］" data-group="ビジネス">経営組織論Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="経営組織論Ⅱ［2単位］" data-group="ビジネス">経営組織論Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="戦略経営論Ⅰ［2単位］" data-group="ビジネス">戦略経営論Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="戦略経営論Ⅱ［2単位］" data-group="ビジネス">戦略経営論Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="経営分析論Ⅰ［2単位］" data-group="ビジネス">経営分析論Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="経営分析論Ⅱ［2単位］" data-group="ビジネス">経営分析論Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="職業キャリア論［2単位］" data-group="ビジネス">職業キャリア論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="労働経済学［2単位］" data-group="ビジネス">労働経済学［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="シティズンシップ論［2単位］" data-group="ビジネス">シティズンシップ論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="生産システム論［2単位］" data-group="ビジネス">生産システム論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="国際経営論［2単位］" data-group="ビジネス">国際経営論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="日本経済論［2単位］" data-group="ビジネス">日本経済論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="産業論［2単位］" data-group="ビジネス">産業論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="広告ビジネス論［2単位］" data-group="ビジネス">広告ビジネス論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="マーケティング論［2単位］" data-group="ビジネス">マーケティング論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="流通・マーケティング戦略論［2単位］" data-group="ビジネス">流通・マーケティング戦略論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="流通・サービスビジネス論［2単位］" data-group="ビジネス">流通・サービスビジネス論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="就業機会発見実務［2単位］" data-group="ビジネス">就業機会発見実務［2単位］</label>
+
+        <h2>発達・教育</h2>
+        <label><input type="checkbox" name="requiredCourse" value="キャリア研究調査実習A（行動と意識の測定）［2単位］"data-group="発達・教育">キャリア研究調査実習A（行動と意識の測定）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="キャリア研究調査実習B（恋愛の質的研究）［2単位］"data-group="発達・教育">キャリア研究調査実習B（恋愛の質的研究）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="外書講読Ａ（発達・教育）［2単位］"data-group="発達・教育">外書講読Ａ（発達・教育）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="外書講読Ｂ（発達・教育）［2単位］"data-group="発達・教育">外書講読Ｂ（発達・教育）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="生涯発達心理学Ⅰ［2単位］"data-group="発達・教育">生涯発達心理学Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="生涯発達心理学Ⅱ［2単位］"data-group="発達・教育">生涯発達心理学Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="臨床教育相談論Ⅰ［2単位］"data-group="発達・教育">臨床教育相談論Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="臨床教育相談論Ⅱ［2単位］"data-group="発達・教育">臨床教育相談論Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="キャリアカウンセリングⅠ［2単位］"data-group="発達・教育">キャリアカウンセリングⅠ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="キャリアカウンセリングⅡ［2単位］"data-group="発達・教育">キャリアカウンセリングⅡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="キャリアカウンセリングⅢ（ケーススタディ）［2単位］"data-group="発達・教育">キャリアカウンセリングⅢ（ケーススタディ）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="教育相談［2単位］"data-group="発達・教育">教育相談［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="教育心理学［2単位］"data-group="発達・教育">教育心理学［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="学校論Ⅰ（キャリア形成）［2単位］"data-group="発達・教育">学校論Ⅰ（キャリア形成）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="学校論Ⅱ（キャリア形成）［2単位］"data-group="発達・教育">学校論Ⅱ（キャリア形成）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="学校論Ⅲ（キャリア教育）［2単位］"data-group="発達・教育">学校論Ⅲ（キャリア教育）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="学校論Ⅳ（キャリア教育）［2単位］"data-group="発達・教育">学校論Ⅳ（キャリア教育）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="生涯学習論Ⅰ（生涯学習支援論Ⅰ）［2単位］"ata-group="発達・教育">生涯学習論Ⅰ（生涯学習支援論Ⅰ）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="生涯学習論Ⅱ（生涯学習支援論Ⅱ）［2単位］"data-group="発達・教育">生涯学習論Ⅱ（生涯学習支援論Ⅱ）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="図書館情報学概論Ⅰ［2単位］"data-group="発達・教育">図書館情報学概論Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="図書館情報学概論Ⅱ［2単位］"data-group="発達・教育">図書館情報学概論Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="メディア教育論Ⅰ［2単位］"data-group="発達・教育">メディア教育論Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="メディア教育論Ⅱ［2単位］"data-group="発達・教育">メディア教育論Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="教育マネジメントⅠ［2単位］"data-group="発達・教育">教育マネジメントⅠ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="教育マネジメントⅡ［2単位］"data-group="発達・教育">教育マネジメントⅡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="教育政策［2単位］"data-group="発達・教育">教育政策［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="現代教育思想［2単位］"data-group="発達・教育">現代教育思想［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="生涯学習論Ⅲ（成人教育論Ⅰ）［2単位］"data-group="発達・教育">生涯学習論Ⅲ（成人教育論Ⅰ）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="生涯学習論Ⅳ（成人教育論Ⅱ）［2単位］"data-group="発達・教育">生涯学習論Ⅳ（成人教育論Ⅱ）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="学習の社会史Ａ［2単位］"data-group="発達・教育">学習の社会史Ａ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="学習の社会史Ｂ［2単位］"data-group="発達・教育">学習の社会史Ｂ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="教育社会学Ⅰ［2単位］"data-group="発達・教育">教育社会学Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="教育社会学Ⅱ［2単位］"data-group="発達・教育">教育社会学Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="教育経済学［2単位］"data-group="発達・教育">教育経済学［2単位］</label>
+       
+        <h2>ライフ</h2>
+        <label><input type="checkbox" name="requiredCourse" value="キャリア研究調査実習E（幸福論）［2単位］"data-group="ライフ">キャリア研究調査実習E（幸福論）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="キャリア研究調査実習F（まちづくり論）［2単位］"data-group="ライフ">キャリア研究調査実習F（まちづくり論）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="外書講読Ａ（ライフ）［2単位］"data-group="ライフ">外書講読Ａ（ライフ）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="外書講読Ｂ（ライフ）［2単位］"data-group="ライフ">外書講読Ｂ（ライフ）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="コミュニティ社会論Ⅰ［2単位］"data-group="ライフ">コミュニティ社会論Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="コミュニティ社会論Ⅱ［2単位］"data-group="ライフ">コミュニティ社会論Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="家族論［2単位］"data-group="ライフ">家族論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="若者文化論［2単位］"data-group="ライフ">若者文化論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="世代間交流論［2単位］"data-group="ライフ">世代間交流論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="身体表現論［2単位］"data-group="ライフ">身体表現論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="地域文化論［2単位］"data-group="ライフ">地域文化論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="アイデンティティ論［2単位］"data-group="ライフ">アイデンティティ論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="余暇集団論［2単位］"data-group="ライフ">余暇集団論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ＮＰＯ論［2単位］"data-group="ライフ">ＮＰＯ論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="公共サービス論［2単位］"data-group="ライフ">公共サービス論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="アート・マネジメント論［2単位］"data-group="ライフ">アート・マネジメント論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="文化経営論［2単位］"data-group="ライフ">文化経営論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="メディア文化論［2単位］"data-group="ライフ">メディア文化論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="文化マーケティング論［2単位］"data-group="ライフ">文化マーケティング論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ブランド創造論［2単位］"data-group="ライフ">ブランド創造論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="産業文化論［2単位］"data-group="ライフ">産業文化論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ミュージアム概論［2単位］"data-group="ライフ">ミュージアム概論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ミュージアム経営論［2単位］"data-group="ライフ">ミュージアム経営論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="多文化社会論Ⅰ［2単位］"data-group="ライフ">多文化社会論Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="多文化社会論Ⅱ［2単位］"data-group="ライフ">多文化社会論Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="多文化社会論Ⅲ［2単位］"data-group="ライフ">多文化社会論Ⅲ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="アジア社会論Ⅰ［2単位］"data-group="ライフ">アジア社会論Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="アジア社会論Ⅱ［2単位］"data-group="ライフ">アジア社会論Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="国際関係論Ⅰ［2単位］"data-group="ライフ">国際関係論Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="国際関係論Ⅱ［2単位］"data-group="ライフ">国際関係論Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="国際地域研究Ⅰ［2単位］"data-group="ライフ">国際地域研究Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="国際地域研究Ⅱ［2単位］"data-group="ライフ">国際地域研究Ⅱ［2単位］</label>
+
+        <h2>総合</h2>
+        <label><input type="checkbox" name="requiredCourse" value="職業能力ベーシックスキルⅠ【2021年度以前入学者用】［2単位］">職業能力ベーシックスキルⅠ【2021年度以前入学者用】［2単位］</label> 
+        <label><input type="checkbox" name="requiredCourse" value="職業能力ベーシックスキルⅡ【2021年度以前入学者用】［2単位］">職業能力ベーシックスキルⅡ【2021年度以前入学者用】［2単位］</label>
+
+        <h2>演習科目</h2>
+        <label><input type="checkbox" name="requiredCourse" value="演習：2年後期［2単位］">演習：2年後期［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="演習：3年前期［2単位］">演習：3年前期［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="演習：3年後期［2単位］">演習：3年後期［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="演習：4年前期［2単位］">演習：4年前期［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="演習：4年後期［2単位］">演習：4年後期［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="卒業論文［4単位］">卒業論文［4単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="キャリアデザイン学総合演習［2単位］">キャリアデザイン学総合演習［2単位］</label>
+
+        <h2>関連科目</h2>
+        <label><input type="checkbox" name="requiredCourse" value="国際コミュニケーション語学：（英語Ⅰ）：［1単位］">国際コミュニケーション語学（英語Ⅰ）：［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="国際コミュニケーション語学：（英語Ⅱ）：［1単位］">国際コミュニケーション語学（英語Ⅱ）：［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="国際コミュニケーション語学：（英語Ⅲ）：［1単位］">国際コミュニケーション語学（英語Ⅲ）：［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="国際コミュニケーション語学：（英語Ⅳ）：［1単位］">国際コミュニケーション語学（英語Ⅳ）：［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="国際コミュニケーション語学：（英語Ⅴ）：［1単位］">国際コミュニケーション語学（英語Ⅴ）：［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="就業機会とキャリア特講E-働くことと労働組合［2単位］-">就業機会とキャリア特講E-働くことと労働組合［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="就業応用力養成Ⅰ［2単位］">就業応用力養成Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="就業応用力養成Ⅱ［2単位］">就業応用力養成Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="異文化適応論［2単位］">異文化適応論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="市民社会と政治［2単位］">市民社会と政治［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="労働環境法［2単位］">労働環境法［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="財務会計論Ⅰ［2単位］">財務会計論Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="財務会計論Ⅱ［2単位］">財務会計論Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="監査論Ⅰ［2単位］">監査論Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="監査論Ⅱ［2単位］">監査論Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="税務会計論Ⅰ［2単位］">税務会計論Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="税務会計論Ⅱ［2単位］">税務会計論Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="管理会計論Ⅰ［2単位］">管理会計論Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="管理会計論Ⅱ［2単位］">管理会計論Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="原価計算論Ⅰ［2単位］">原価計算論Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="原価計算論Ⅱ［2単位］">原価計算論Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="経営分析Ⅰ［2単位］">経営分析Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="経営分析Ⅰ［2単位］">経営分析Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="経営分析Ⅱ［2単位］">経営分析Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="教職入門［2単位］">教職入門［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="教育原理［2単位］">教育原理［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="教育の制度・経営［2単位］">教育の制度・経営［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="教育課程論［2単位］">教育課程論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="教育方法論（ICT活用を含む）［2単位］">教育方法論（ICT活用を含む）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="図書館演習［4単位］">図書館演習［4単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="図書館サービス概論［2単位］">図書館サービス概論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="情報サービス演習［4単位］">情報サービス演習［4単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="図書館情報資源概論［2単位］">図書館情報資源概論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="読書と豊かな人間性［2単位］">読書と豊かな人間性［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="情報メディアの活用［2単位］">情報メディアの活用［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ミュージアム資料論［2単位］">ミュージアム資料論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ミュージアム教育論［2単位］">ミュージアム教育論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="社会教育演習［4単位］">社会教育演習［4単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="現代生活・文化と社会教育Ⅰ［2単位］">現代生活・文化と社会教育Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="現代生活・文化と社会教育Ⅱ［2単位］">現代生活・文化と社会教育Ⅱ［2単位］</label>
+        
+
+        <h2>自由科目</h2>
+
+        <h2>他学部公開科目</h2>
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［2単位］"data-group="自由科目">他学部公開科目［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［2単位］"data-group="自由科目">他学部公開科目［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［2単位］"data-group="自由科目">他学部公開科目［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［2単位］"data-group="自由科目">他学部公開科目［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［2単位］"data-group="自由科目">他学部公開科目［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［2単位］"data-group="自由科目">他学部公開科目［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［2単位］"data-group="自由科目">他学部公開科目［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［2単位］"data-group="自由科目">他学部公開科目［2単位］</label>
+
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［1単位］"data-group="自由科目">他学部公開科目［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［1単位］"data-group="自由科目">他学部公開科目［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［1単位］"data-group="自由科目">他学部公開科目［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［1単位］"data-group="自由科目">他学部公開科目［1単位］</label>      
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［1単位］"data-group="自由科目">他学部公開科目［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［1単位］"data-group="自由科目">他学部公開科目［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［1単位］"data-group="自由科目">他学部公開科目［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［1単位］"data-group="自由科目">他学部公開科目［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［1単位］"data-group="自由科目">他学部公開科目［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［1単位］"data-group="自由科目">他学部公開科目［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［1単位］"data-group="自由科目">他学部公開科目［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［1単位］"data-group="自由科目">他学部公開科目［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［1単位］"data-group="自由科目">他学部公開科目［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［1単位］"data-group="自由科目">他学部公開科目［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［1単位］"data-group="自由科目">他学部公開科目［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［1単位］"data-group="自由科目">他学部公開科目［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［4単位］"data-group="自由科目">他学部公開科目［4単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［4単位］"data-group="自由科目">他学部公開科目［4単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［4単位］"data-group="自由科目">他学部公開科目［4単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="他学部公開科目［4単位］"data-group="自由科目">他学部公開科目［4単位］</label>
+
+
+
+
+        <h2>全学PF_データサイエンス科目群</h2>
+        <label><input type="checkbox" name="requiredCourse" value="データサイエンス入門A［2単位］"data-group="自由科目">データサイエンス入門A［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="データサイエンス入門B［2単位］"data-group="自由科目">データサイエンス入門B［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="データサイエンス応用基礎A［2単位］"data-group="自由科目">データサイエンス応用基礎A［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="データサイエンス応用基礎B［2単位］"data-group="自由科目">データサイエンス応用基礎B［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="データサイエンス応用基礎C［2単位］"data-group="自由科目">データサイエンス応用基礎C［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="データサイエンス応用基礎D［4単位］"data-group="自由科目">データサイエンス応用基礎D［4単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="データサイエンス応用基礎E［2単位］"data-group="自由科目">データサイエンス応用基礎E［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="データサイエンス応用基礎F［2単位］"data-group="自由科目">データサイエンス応用基礎F［2単位］</label>
+
+        <h2>全学PF_社会連携教育科目群</h2>
+        <label><input type="checkbox" name="requiredCourse" value="社会連携フィールドワーク（ベーシック）［2単位］"data-group="自由科目">社会連携フィールドワーク（ベーシック）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="社会連携フィールドワーク（ベーシック）［2単位］"data-group="自由科目">社会連携フィールドワーク（ベーシック）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="社会連携フィールドワーク（ベーシック）［2単位］"data-group="自由科目">社会連携フィールドワーク（ベーシック）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="社会連携フィールドワーク（ベーシック）［2単位］"data-group="自由科目">社会連携フィールドワーク（ベーシック）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="社会連携フィールドワーク（アドバンス）［2単位］"data-group="自由科目">社会連携フィールドワーク（アドバンス）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="社会連携フィールドワーク［1単位］"data-group="自由科目">社会連携フィールドワーク［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="社会連携PBL（アドバンス）［2単位］"data-group="自由科目">社会連携PBL（アドバンス）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="社会連携講座（ベーシック）［2単位］"data-group="自由科目">社会連携講座（ベーシック）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="社会連携講座（ベーシック）［2単位］"data-group="自由科目">社会連携講座（ベーシック）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="社会連携講座（アドバンス）［2単位］"data-group="自由科目">社会連携講座（アドバンス）［2単位］</label>
+
+        <h2>ILAC科目</h2>
+        <h2>１００番台０群・全学PF_キャリア教育科目群</h2>
+        <label><input type="checkbox" name="requiredCourse" value="情報処理演習［2単位］"data-group="１００番台０群・全学PF_キャリア教育科目群">情報処理演習［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="キャリアデザイン入門［2単位］"data-group="１００番台０群・全学PF_キャリア教育科目群">キャリアデザイン入門［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="キャリアデザイン応用［2単位］"data-group="１００番台０群・全学PF_キャリア教育科目群">キャリアデザイン応用［2単位］</label>
+
+        <h2>１００番台１群（人文分野）</h2>
+        <label><input type="checkbox" name="requiredCourse" value="日本古典文学Ａ［2単位］"data-group="１００番台１群（人文分野）">日本古典文学Ａ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="日本古典文学Ｂ［2単位］"data-group="１００番台１群（人文分野）">日本古典文学Ｂ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="日本近・現代文学Ａ［2単位］"data-group="１００番台１群（人文分野）">日本近・現代文学Ａ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="日本近・現代文学Ｂ［2単位］"data-group="１００番台１群（人文分野）">日本近・現代文学Ｂ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="日本文学Ａ［2単位］"data-group="１００番台１群（人文分野）">日本文学Ａ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="日本文学Ｂ［2単位］"data-group="１００番台１群（人文分野）">日本文学Ｂ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="外国文学Ａ［2単位］"data-group="１００番台１群（人文分野）">外国文学Ａ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="外国文学Ｂ［2単位］"data-group="１００番台１群（人文分野）">外国文学Ｂ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="哲学Ⅰ［2単位］"data-group="１００番台１群（人文分野）">哲学Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="哲学Ⅱ［2単位］"data-group="１００番台１群（人文分野）">哲学Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="論理学Ⅰ［2単位］"data-group="１００番台１群（人文分野）">論理学Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="論理学Ⅱ［2単位］"data-group="１００番台１群（人文分野）">論理学Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="倫理学Ⅰ［2単位］"data-group="１００番台１群（人文分野）">倫理学Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="倫理学Ⅱ［2単位］"data-group="１００番台１群（人文分野）">倫理学Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="東洋史Ⅰ［2単位］"data-group="１００番台１群（人文分野）">東洋史Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="東洋史Ⅱ［2単位］"data-group="１００番台１群（人文分野）">東洋史Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="西洋史Ⅰ［2単位］"data-group="１００番台１群（人文分野）">西洋史Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="西洋史Ⅱ［2単位］"data-group="１００番台１群（人文分野）">西洋史Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="日本史Ⅰ［2単位］"data-group="１００番台１群（人文分野）">日本史Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="日本史Ⅱ［2単位］"data-group="１００番台１群（人文分野）">日本史Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="言語学Ａ［2単位］"data-group="１００番台１群（人文分野）">言語学Ａ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="言語学Ｂ［2単位］"data-group="１００番台１群（人文分野）">言語学Ｂ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="宗教論Ⅰ［2単位］"data-group="１００番台１群（人文分野）">宗教論Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="宗教論Ⅱ［2単位］"data-group="１００番台１群（人文分野）">宗教論Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="文章論［2単位］"data-group="１００番台１群（人文分野）">文章論［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="芸術Ａ［2単位］"data-group="１００番台１群（人文分野）">芸術Ａ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="芸術Ｂ［2単位］"data-group="１００番台１群（人文分野）">芸術Ｂ［2単位］</label>
+
+        <h2>１００番台２群（社会分野）</h2>
+        <label><input type="checkbox" name="requiredCourse" value="法学Ⅰ［2単位］"data-group="１００番台２群（社会分野）">法学Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="法学Ⅱ［2単位］"data-group="１００番台２群（社会分野）">法学Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="法学（日本国憲法）［2単位］"data-group="１００番台２群（社会分野）">法学（日本国憲法）［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="経済学Ⅰ［2単位］"data-group="１００番台２群（社会分野）">経済学Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="経済学Ⅱ［2単位］"data-group="１００番台２群（社会分野）">経済学Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="マクロ経済学Ⅰ［2単位］"data-group="１００番台２群（社会分野）">マクロ経済学Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="マクロ経済学Ⅱ［2単位］"data-group="１００番台２群（社会分野）">マクロ経済学Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="心理学Ⅰ［2単位］"data-group="１００番台２群（社会分野）">心理学Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="心理学Ⅱ［2単位］"data-group="１００番台２群（社会分野）">心理学Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="地理学Ⅰ［2単位］"data-group="１００番台２群（社会分野）">地理学Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="地理学Ⅱ［2単位］"data-group="１００番台２群（社会分野）">地理学Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="政治学Ⅰ［2単位］"data-group="１００番台２群（社会分野）">政治学Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="政治学Ⅱ［2単位］"data-group="１００番台２群（社会分野）">政治学Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="社会学Ⅰ［2単位］"data-group="１００番台２群（社会分野）">社会学Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="社会学Ⅱ［2単位］"data-group="１００番台２群（社会分野）">社会学Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="文化人類学［2単位］"data-group="１００番台２群（社会分野）">文化人類学［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="社会思想Ⅰ［2単位］"data-group="１００番台２群（社会分野）">社会思想Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="社会思想Ⅱ［2単位］"data-group="１００番台２群（社会分野）">社会思想Ⅱ［2単位］</label>
+
+
+        <h2>１００番台３群（自然分野）</h2>
+        <label><input type="checkbox" name="requiredCourse" value="教養数学Ａ［2単位］"data-group="１００番台３群（自然分野）">教養数学Ａ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="教養数学Ｂ［2単位］"data-group="１００番台３群（自然分野）">教養数学Ｂ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="基礎数学Ⅰ［2単位］"data-group="１００番台３群（自然分野）">基礎数学Ⅰ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="基礎数学Ⅱ［2単位］"data-group="１００番台３群（自然分野）">基礎数学Ⅱ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="入門物理学Ａ［2単位］"data-group="１００番台３群（自然分野）">入門物理学Ａ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="入門物理学Ｂ［2単位］"data-group="１００番台３群（自然分野）">入門物理学Ｂ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="入門生物学Ａ［2単位］"data-group="１００番台３群（自然分野）">入門生物学Ａ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="入門生物学Ｂ［2単位］"data-group="１００番台３群（自然分野）">入門生物学Ｂ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="入門化学Ａ［2単位］"data-group="１００番台３群（自然分野）">入門化学Ａ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="入門化学Ｂ［2単位］"data-group="１００番台３群（自然分野）">入門化学Ｂ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="サイエンス・ラボＡ［2単位］"data-group="１００番台３群（自然分野）">サイエンス・ラボＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="サイエンス・ラボＢ［2単位］"data-group="１００番台３群（自然分野）">サイエンス・ラボＢ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="天文学Ａ［2単位］"data-group="１００番台３群（自然分野）">天文学Ａ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="天文学Ｂ［2単位］"data-group="１００番台３群（自然分野）">天文学Ｂ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="科学論Ａ［2単位］"data-group="１００番台３群（自然分野）">科学論Ａ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="科学論Ｂ［2単位］"data-group="１００番台３群（自然分野）">科学論Ｂ［2単位］</label>
+
+        <h2>１００番台４群（［必修］英語）</h2>
+         <label><input type="checkbox" name="requiredCourse" value="英語１－Ⅰ［1単位］">英語１－Ⅰ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="英語１－Ⅱ［1単位］">英語１－Ⅱ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="英語２－Ⅰ［1単位］">英語２－Ⅰ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="英語２－Ⅱ［1単位］">英語２－Ⅱ［1単位］</label>
+
+        <h2>１００番台４群（［必修］諸外国語）</h2>
+
+        <label><input type="checkbox" name="requiredCourse" value="ドイツ語１-Ⅰ［1単位］"data-group="１００番台４群（［必修］諸外国語）">ドイツ語１-Ⅰ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ドイツ語１-Ⅱ［1単位］"data-group="１００番台４群（［必修］諸外国語）">ドイツ語１-Ⅱ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ドイツ語２-Ⅰ"data-group="１００番台４群（［必修］諸外国語）">ドイツ語２-Ⅰ</label>
+        <label><input type="checkbox" name="requiredCourse" value="ドイツ語２-Ⅱ"data-group="１００番台４群（［必修］諸外国語）">ドイツ語２-Ⅱ</label>
+        <label><input type="checkbox" name="requiredCourse" value="フランス語１-Ⅰ［1単位］"data-group="１００番台４群（［必修］諸外国語）">フランス語１-Ⅰ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="フランス語１-Ⅱ［1単位］"data-group="１００番台４群（［必修］諸外国語）">フランス語１-Ⅱ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="フランス語２-Ⅰ"data-group="１００番台４群（［必修］諸外国語）">フランス語２-Ⅰ</label>
+        <label><input type="checkbox" name="requiredCourse" value="フランス語２-Ⅱ"data-group="１００番台４群（［必修］諸外国語）">フランス語２-Ⅱ</label>
+        <label><input type="checkbox" name="requiredCourse" value="ロシア語１-Ⅰ［1単位］"data-group="１００番台４群（［必修］諸外国語）">ロシア語１-Ⅰ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ロシア語１-Ⅱ［1単位］"data-group="１００番台４群（［必修］諸外国語）">ロシア語１-Ⅱ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ロシア語１-Ⅰ"data-group="１００番台４群（［必修］諸外国語）">ロシア語１-Ⅰ</label>
+        <label><input type="checkbox" name="requiredCourse" value="ロシア語１-Ⅱ"data-group="１００番台４群（［必修］諸外国語）">ロシア語１-Ⅱ</label>
+        <label><input type="checkbox" name="requiredCourse" value="中国語１-Ⅰ［1単位］"data-group="１００番台４群（［必修］諸外国語）">中国語１-Ⅰ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="中国語１-Ⅱ［1単位］"data-group="１００番台４群（［必修］諸外国語）">中国語１-Ⅱ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="中国語２-Ⅰ［1単位］"data-group="１００番台４群（［必修］諸外国語）">中国語２-Ⅰ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="中国語２-Ⅱ［1単位］"data-group="１００番台４群（［必修］諸外国語）">中国語２-Ⅱ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="スペイン語１-Ⅰ［1単位］"data-group="１００番台４群（［必修］諸外国語）">スペイン語１-Ⅰ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="スペイン語１-Ⅱ［1単位］"data-group="１００番台４群（［必修］諸外国語）">スペイン語１-Ⅱ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="スペイン語２-Ⅰ［1単位］"data-group="１００番台４群（［必修］諸外国語）">スペイン語２-Ⅰ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="スペイン語２-Ⅱ［1単位］"data-group="１００番台４群（［必修］諸外国語）">スペイン語２-Ⅱ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="朝鮮語１-Ⅰ［1単位］"data-group="１００番台４群（［必修］諸外国語）">朝鮮語１-Ⅰ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="朝鮮語１-Ⅱ［1単位］"data-group="１００番台４群（［必修］諸外国語）">朝鮮語１-Ⅱ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="朝鮮語２-Ⅰ［1単位］"data-group="１００番台４群（［必修］諸外国語）">朝鮮語２-Ⅰ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="朝鮮語２-Ⅱ［1単位］"data-group="１００番台４群（［必修］諸外国語）">朝鮮語２-Ⅱ［1単位］</label>
+
+        <h2>１００番台５群（保健体育分野）［必修］</h2>
+        <label><input type="checkbox" name="requiredCourse" value="スポーツ総合演習［2単位］"data-group="">スポーツ総合演習［2単位］</label>
+
+        <h2>１００番台５群（保健体育分野）［選択］</h2>
+        <label><input type="checkbox" name="requiredCourse" value="スポーツ総合演習Ｓ［2単位］"data-group="１００番台５群（保健体育分野）［選択］">スポーツ総合演習Ｓ［2単位］</label>
+
+　　　　 <h2>２００番台０群</h2>
+        <label><input type="checkbox" name="requiredCourse" value="法政学の探究ＬＡ［2単位］"data-group="200番台0群">法政学の探究ＬＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="法政学の探究ＬＢ［2単位］"data-group="200番台0群">法政学の探究ＬＢ［2単位］</label>
+
+        <h2>２００番台１群（人文分野）</h2>
+        <label><input type="checkbox" name="requiredCourse" value="日本文学と文化ＬＡ［2単位］"data-group="200番台１群（人文分野）">日本文学と文化ＬＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="日本文学と文化ＬＢ［2単位］"data-group="200番台１群（人文分野）">日本文学と文化ＬＢ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="日本文学と文化ＬＣ［2単位］"data-group="200番台１群（人文分野）">日本文学と文化ＬＣ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="日本文学と文化ＬＤ［2単位］"data-group="200番台１群（人文分野）">日本文学と文化ＬＤ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="日本文学と文化ＬＥ［2単位］"data-group="200番台１群（人文分野）">日本文学と文化ＬＥ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="日本文学と文化ＬＦ［2単位］"data-group="200番台１群（人文分野）">日本文学と文化ＬＦ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="日本文学と文化LG［2単位］"data-group="200番台１群（人文分野）">日本文学と文化LG［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="日本文学と文化LH［2単位］"data-group="200番台１群（人文分野）">日本文学と文化LH［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="外国文学と文化ＬＡ［2単位］"data-group="200番台１群（人文分野）">外国文学と文化ＬＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="外国文学と文化ＬＢ［2単位］"data-group="200番台１群（人文分野）">外国文学と文化ＬＢ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="外国文学と文化ＬＣ［2単位］"data-group="200番台１群（人文分野）">外国文学と文化ＬＣ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="外国文学と文化ＬＤ［2単位］"data-group="200番台１群（人文分野）">外国文学と文化ＬＤ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="外国文学と文化ＬＥ［2単位］"data-group="200番台１群（人文分野）">外国文学と文化ＬＥ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="外国文学と文化ＬＦ［2単位］"data-group="200番台１群（人文分野）">外国文学と文化ＬＦ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="外国文学と文化ＬＧ［2単位］"data-group="200番台１群（人文分野）">外国文学と文化ＬＧ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="外国文学と文化ＬＨ［2単位］"data-group="200番台１群（人文分野）">外国文学と文化ＬＨ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="文学と社会ＬＡ［2単位］"data-group="200番台１群（人文分野）">文学と社会ＬＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="文学と社会ＬＢ［2単位］"data-group="200番台１群（人文分野）">文学と社会ＬＢ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="文学と社会ＬＣ［2単位］"data-group="200番台１群（人文分野）">文学と社会ＬＣ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="文学と社会ＬＤ［2単位］"data-group="200番台１群（人文分野）">文学と社会ＬＤ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="文学と社会ＬＥ［2単位］"data-group="200番台１群（人文分野）">文学と社会ＬＥ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="文学と社会ＬＦ［2単位］"data-group="200番台１群（人文分野）">文学と社会ＬＦ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="哲学ＬⅠ［2単位］"data-group="200番台１群（人文分野）">哲学ＬⅠ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="哲学ＬⅡ［2単位］"data-group="200番台１群（人文分野）">哲学ＬⅡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="論理学ＬⅠ［2単位］"data-group="200番台１群（人文分野）">論理学ＬⅠ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="論理学ＬⅡ［2単位］"data-group="200番台１群（人文分野）">論理学ＬⅡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="倫理学ＬⅠ［2単位］"data-group="200番台１群（人文分野）">倫理学ＬⅠ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="倫理学ＬⅡ［2単位］"data-group="200番台１群（人文分野）">倫理学ＬⅡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="東洋史ＬＡ［2単位］"data-group="200番台１群（人文分野）">東洋史ＬＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="東洋史ＬＢ［2単位］"data-group="200番台１群（人文分野）">東洋史ＬＢ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="東洋史ＬＣ［2単位］"data-group="200番台１群（人文分野）">東洋史ＬＣ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="東洋史ＬＤ［2単位］"data-group="200番台１群（人文分野）">東洋史ＬＤ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="西洋史ＬＡ［2単位］"data-group="200番台１群（人文分野）">西洋史ＬＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="西洋史ＬＢ［2単位］"data-group="200番台１群（人文分野）">西洋史ＬＢ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="日本史ＬⅠ［2単位］"data-group="200番台１群（人文分野）">日本史ＬⅠ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="日本史ＬⅡ［2単位］"data-group="200番台１群（人文分野）">日本史ＬⅡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="音声学Ｌ［2単位］"data-group="200番台１群（人文分野）">音声学Ｌ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="宗教論ＬⅠ［2単位］"data-group="200番台１群（人文分野）">宗教論ＬⅠ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="宗教論ＬⅡ［2単位］"data-group="200番台１群（人文分野）">宗教論ＬⅡ［2単位］</label>
+
+        <h2>２００番台２群（社会分野）</h2>
+        <label><input type="checkbox" name="requiredCourse" value="経済学ＬＡ［2単位］"data-group="200番台２群（社会分野）">経済学ＬＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="経済学ＬＢ［2単位］"data-group="200番台２群（社会分野）">経済学ＬＢ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="心理学ＬＡ［2単位］"data-group="200番台２群（社会分野）">心理学ＬＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="心理学ＬＢ［2単位］"data-group="200番台２群（社会分野）">心理学ＬＢ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="地理学ＬＡ［2単位］"data-group="200番台２群（社会分野）">地理学ＬＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="地理学ＬＢ［2単位］"data-group="200番台２群（社会分野）">地理学ＬＢ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="地理学ＬＣ［2単位］"data-group="200番台２群（社会分野）">地理学ＬＣ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="地理学ＬＤ［2単位］"data-group="200番台２群（社会分野）">地理学ＬＤ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="地理学ＬＥ［2単位］"data-group="200番台２群（社会分野）">地理学ＬＥ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="地理学ＬＦ［2単位］"data-group="200番台２群（社会分野）">地理学ＬＦ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="政治学ＬＢ［2単位］"data-group="200番台２群（社会分野）">政治学ＬＢ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="社会学ＬＡ［2単位］"data-group="200番台２群（社会分野）">社会学ＬＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="社会学ＬＢ［2単位］"data-group="200番台２群（社会分野）">社会学ＬＢ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="社会学ＬＣ［2単位］"data-group="200番台２群（社会分野）">社会学ＬＣ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="社会学ＬＤ［2単位］"data-group="200番台２群（社会分野）">社会学ＬＤ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="文化人類学Ｌ［2単位］"data-group="200番台２群（社会分野）">文化人類学Ｌ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="社会思想ＬＡ［2単位］"data-group="200番台２群（社会分野）">社会思想ＬＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="社会思想ＬＢ［2単位］"data-group="200番台２群（社会分野）">社会思想ＬＢ［2単位］</label>
+
+       
+        <h2>２００番台番台３群（自然分野）</h2>
+         <label><input type="checkbox" name="requiredCourse" value="数学特講ＬＡ［2単位］"data-group="200番台３群（自然分野）">数学特講ＬＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="数学特講ＬＢ［2単位］"data-group="200番台３群（自然分野）">数学特講ＬＢ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="発展数学ＬⅠ［2単位］"data-group="200番台３群（自然分野）">発展数学ＬⅠ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="発展数学ＬⅡ［2単位］"data-group="200番台３群（自然分野）">発展数学ＬⅡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="教養物理学ＬＡ［2単位］"data-group="200番台３群（自然分野）">教養物理学ＬＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="教養物理学ＬＢ［2単位］"data-group="200番台３群（自然分野）">教養物理学ＬＢ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="教養物理学ＬＣ［2単位］"data-group="200番台３群（自然分野）">教養物理学ＬＣ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="教養生物学ＬＡ［2単位］"data-group="200番台３群（自然分野）">教養生物学ＬＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="教養生物学ＬＢ［2単位］"data-group="200番台３群（自然分野）">教養生物学ＬＢ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="教養生物学ＬＣ［2単位］"data-group="200番台３群（自然分野）">教養生物学ＬＣ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="教養生物学ＬＤ［2単位］"data-group="200番台３群（自然分野）">教養生物学ＬＤ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="教養化学ＬＡ［2単位］"data-group="200番台３群（自然分野）">教養化学ＬＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="教養化学ＬＢ［2単位］"data-group="200番台３群（自然分野）">教養化学ＬＢ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="教養化学ＬＣ［2単位］"data-group="200番台３群（自然分野）">教養化学ＬＣ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="教養化学ＬＤ［2単位］"data-group="200番台３群（自然分野）">教養化学ＬＤ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="教養化学ＬＥ［2単位］"data-group="200番台３群（自然分野）">教養化学ＬＥ［2単位］</label>
+
+        <h2>２００番台４群（諸外国分野）</h2>
+        <label><input type="checkbox" name="requiredCourse" value="ドイツ語の世界ＬＡ［2単位］"data-group="200番台４群（諸外国分野）">ドイツ語の世界ＬＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ドイツ語の世界ＬＢ［2単位］"data-group="200番台４群（諸外国分野）">ドイツ語の世界ＬＢ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ドイツの文化と社会ＬＡ［2単位］"data-group="200番台４群（諸外国分野）">ドイツの文化と社会ＬＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ドイツの文化と社会ＬＢ［2単位］"data-group="200番台４群（諸外国分野）">ドイツの文化と社会ＬＢ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="フランス語の世界ＬＡ［2単位］"data-group="200番台４群（諸外国分野）">フランス語の世界ＬＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="フランス語の世界ＬＢ［2単位］"data-group="200番台４群（諸外国分野）">フランス語の世界ＬＢ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="フランスの文化と社会ＬＡ［2単位］"data-group="200番台４群（諸外国分野）">フランスの文化と社会ＬＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="フランスの文化と社会ＬＢ［2単位］"data-group="200番台４群（諸外国分野）">フランスの文化と社会ＬＢ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="フランス生活文化論ＬＡ［2単位］"data-group="200番台４群（諸外国分野）">フランス生活文化論ＬＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="フランス生活文化論ＬＢ［2単位］"data-group="200番台４群（諸外国分野）">フランス生活文化論ＬＢ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ロシア語の世界ＬＡ［2単位］"data-group="200番台４群（諸外国分野）">ロシア語の世界ＬＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ロシア語の世界ＬＢ［2単位］"data-group="200番台４群（諸外国分野）">ロシア語の世界ＬＢ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ロシアの文化と社会ＬＡ［2単位］"data-group="200番台４群（諸外国分野）">ロシアの文化と社会ＬＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ロシアの文化と社会ＬＢ［2単位］"data-group="200番台４群（諸外国分野）">ロシアの文化と社会ＬＢ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="中国の文化と社会ＬＡ［2単位］"data-group="200番台４群（諸外国分野）">中国の文化と社会ＬＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="中国の文化と社会ＬＢ［2単位］"data-group="200番台４群（諸外国分野）">中国の文化と社会ＬＢ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="スペイン語の世界ＬＡ［2単位］"data-group="200番台４群（諸外国分野）">スペイン語の世界ＬＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="スペイン語の世界ＬＢ［2単位］"data-group="200番台４群（諸外国分野）">スペイン語の世界ＬＢ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="朝鮮の文化と社会ＬＡ［2単位］"data-group="200番台４群（諸外国分野）">朝鮮の文化と社会ＬＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="朝鮮の文化と社会ＬＢ［2単位］"data-group="200番台４群（諸外国分野）">朝鮮の文化と社会ＬＢ［2単位］</label>
+
+        <h2>２００番台５群（保健体育分野）</h2>
+        <label><input type="checkbox" name="requiredCourse" value="健康の科学ＬＡ［2単位］"data-group="200番台５群（保健体育分野）">健康の科学ＬＡ［2単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="健康の科学ＬＢ［2単位］"data-group="200番台５群（保健体育分野）">健康の科学ＬＢ［2単位］</label>
+
+        <h2>２００番台４群［選択］外国語（英語・諸外国語）［１単位］</h2>
+        <label><input type="checkbox" name="requiredCourse" value="入門英語(SSI)Ⅰ［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">入門英語(SSI)Ⅰ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="入門英語(SSI)Ⅱ［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">入門英語(SSI)Ⅱ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="Practical English（オーラル・コミュニケーション）A-Ⅰ［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">Practical English（オーラル・コミュニケーション）A-Ⅰ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="Practical English（オーラル・コミュニケーション）A-Ⅱ［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">Practical English（オーラル・コミュニケーション）A-Ⅱ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="Practical English（オーラル・コミュニケーション）B-Ⅰ［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">Practical English（オーラル・コミュニケーション）B-Ⅰ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="Practical English（オーラル・コミュニケーション）B-Ⅱ［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">Practical English（オーラル・コミュニケーション）B-Ⅱ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="English for Study AbroadⅠ［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">English for Study AbroadⅠ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="English for Study AbroadⅡ［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">English for Study AbroadⅡ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="Practical English（ビジネス・コミュニケーション）A-Ⅰ［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">Practical English（ビジネス・コミュニケーション）A-Ⅰ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="Practical English（ビジネス・コミュニケーション）A-Ⅱ［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">Practical English（ビジネス・コミュニケーション）A-Ⅱ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="Practical English（英語検定試験対策）A-Ⅰ［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">Practical English（英語検定試験対策）A-Ⅰ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="Practical English（英語検定試験対策）A-Ⅱ［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">Practical English（英語検定試験対策）A-Ⅱ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="Practical English（英語検定試験対策）B-Ⅰ［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">Practical English（英語検定試験対策）B-Ⅰ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="Practical English（英語検定試験対策）B-Ⅱ［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">Practical English（英語検定試験対策）B-Ⅱ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ドイツ語コミュニケーションⅠ［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">ドイツ語コミュニケーションⅠ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ドイツ語コミュニケーションⅡ［1単位］［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">ドイツ語コミュニケーションⅡ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ドイツ語視聴覚Ⅰ［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">ドイツ語視聴覚Ⅰ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="ドイツ語視聴覚Ⅱ［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">ドイツ語視聴覚Ⅱ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="フランス語コミュニケーション(初級)Ⅰ［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">フランス語コミュニケーション(初級)Ⅰ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="フランス語コミュニケーション(初級)Ⅱ［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">フランス語コミュニケーション(初級)Ⅱ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="時事フランス語Ⅰ"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">時事フランス語Ⅰ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="時事フランス語Ⅱ"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">時事フランス語Ⅱ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="検定のロシア語Ａ"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">検定のロシア語Ａ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="検定のロシア語Ｂ"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">検定のロシア語Ｂ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="中国語コミュニケーション初級Ⅰ"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">中国語コミュニケーション初級Ⅰ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="中国語コミュニケーション初級Ⅱ"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">中国語コミュニケーション初級Ⅱ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="資格中国語初級Ⅰ［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">資格中国語初級Ⅰ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="資格中国語初級Ⅱ［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">資格中国語初級Ⅱ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="スペイン語コミュニケーションⅠ［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">スペイン語コミュニケーションⅠ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="スペイン語コミュニケーションⅡ［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">スペイン語コミュニケーションⅡ［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="朝鮮語４Ｂ-Ⅰ（視聴覚）［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">朝鮮語４Ｂ-Ⅰ（視聴覚）［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="朝鮮語４Ｂ-Ⅱ（視聴覚）［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">朝鮮語４Ｂ-Ⅱ（視聴覚）［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="朝鮮語４Ｃ-Ⅰ（コミュニケーション）［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">朝鮮語４Ｃ-Ⅰ（コミュニケーション）［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="朝鮮語４Ｃ-Ⅱ（コミュニケーション）［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">朝鮮語４Ｃ-Ⅱ（コミュニケーション）［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="朝鮮語５A-Ⅰ（講読）［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">朝鮮語５A-Ⅰ（講読）［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="朝鮮語５A-Ⅱ（講読）［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">朝鮮語５A-Ⅱ（講読）［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="朝鮮語５B-Ⅰ（表現法）［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">朝鮮語５B-Ⅰ（表現法）［1単位］</label>
+        <label><input type="checkbox" name="requiredCourse" value="朝鮮語５B-Ⅱ（表現法）［1単位］"data-group="200番台4群［選択］外国語（英語・諸外国語）［１単位］">朝鮮語５B-Ⅱ（表現法）［1単位］</label>
+        
+
+        </div>
+        
+        <!--form>button onclick="checkProgress()">判定</button-->
+        <button type="submit">判定</button>
+
+    </form>
+
+   </body>
+<script src="AdvancedJudgment.js"></script>
+</html>

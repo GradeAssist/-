@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>判定結果</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        #resultContainer {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+        #result {
+            white-space: pre-line; /* 改行を反映 */
+            font-weight: bold;
+        }
+        .success {
+            color: #4CAF50;
+        }
+        .error {
+            color: #FF0000;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .disclaimer {
+            margin-top: 15px;
+            font-size: 0.8em;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div id="resultContainer">
+        <h1>判定結果</h1>
+        <p id="result"></p>
+        <button onclick="goBack()">戻る</button>
+        <p class="disclaimer">※この結果は参考用であり、進級や卒業を保証するものではありません。</p>
+    </div>
+    <script>
+       // 結果を表示する
+       document.addEventListener('DOMContentLoaded', function () {
+    const resultElement = document.getElementById('result');
+    const result = new URLSearchParams(window.location.search).get('result');
+
+    console.log('Debug: Raw Result from URL:', result); // デバッグ用ログ
+
+    if (result && typeof result === 'string') {
+        const trimmedResult = result.trim(); // 不要なスペースや改行を削除
+        console.log('Debug: Trimmed Result:', trimmedResult); // デバッグ用ログ
+
+        resultElement.innerHTML = trimmedResult.replace(/\n/g, '<br>');
+
+        // 詳細な比較をデバッグ
+        console.log('Debug: Exact Comparison with Expected String:', trimmedResult === '4年生に進級可能です！');
+
+        if (trimmedResult.includes('不足') || trimmedResult.includes('必要')) {
+    const errorMessages = trimmedResult
+        .split('<br>')
+        .filter(line => line.includes('不足') || line.includes('必要'))
+        .join('<br>');
+    resultElement.innerHTML = errorMessages;
+    resultElement.classList.add('error');
+} else if (trimmedResult.normalize('NFC') === '卒業見込みです！') {
+    resultElement.innerHTML = "卒業見込みです！";
+    resultElement.classList.add('success');
+} else if (trimmedResult.includes('進級可能です')) {
+    resultElement.innerHTML = trimmedResult; // メッセージそのまま表示
+    resultElement.classList.add('success');
+    console.log('Promotion to next year detected in result.'); // デバッグ用
+} else {
+    resultElement.innerText = `結果が不明です: ${trimmedResult}`;
+    console.warn('Unexpected result content after normalization:', trimmedResult); // デバッグ用警告
+}
+    } else {
+        resultElement.innerText = '結果がありません。';
+        console.error('No valid result parameter found in URL or invalid type.'); // デバッグ用
+    }
+});
+    
+        // 戻るボタンの関数
+        function goBack() {
+            // index.html に戻る
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
