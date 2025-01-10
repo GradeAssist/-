@@ -4,6 +4,26 @@ document.addEventListener('DOMContentLoaded', function () {
     restoreFieldSelection();
     restoreSelections();
 
+    // 検索バーの設定
+    const searchInput = document.getElementById('searchInput'); // 検索バーの要素を取得
+    const courseList = document.getElementById('courseList'); // 科目リストの要素を取得
+
+    if (searchInput && courseList) {
+        searchInput.addEventListener('input', function () {
+            const query = searchInput.value.toLowerCase(); // 入力された検索クエリを小文字に変換
+            const courseItems = courseList.querySelectorAll('label'); // 科目リスト内のすべてのラベルを取得
+
+            courseItems.forEach((item) => {
+                const courseText = item.textContent.toLowerCase(); // ラベルのテキストを小文字に変換
+                if (courseText.includes(query)) {
+                    item.style.display = ''; // クエリが一致する場合は表示
+                } else {
+                    item.style.display = 'none'; // 一致しない場合は非表示
+                }
+            });
+        });
+    }
+
     if (form) {
         form.addEventListener('submit', function (event) {
             event.preventDefault();
@@ -16,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error('フォーム要素が見つかりません。');
     }
 });
-
 // 年度別の進級・卒業条件
 const criteria = {
     1: {
