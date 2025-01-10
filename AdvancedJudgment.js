@@ -79,6 +79,16 @@ const fieldCriteria = {
     }
 };
 
+const groupCriteria = [
+    { groupName: '１００番台１群（人文分野）', requiredCredits: 4 },
+    { groupName: '１００番台２群（社会分野）', requiredCredits: 4 },
+    { groupName: '１００番台３群（自然分野）', requiredCredits: 4 },
+    { groupName: '２００番台１群（人文分野）', requiredCredits: 2 },
+    { groupName: '２００番台２群（社会分野）', requiredCredits: 2 },
+    { groupName: '２００番台番台３群（自然分野）', requiredCredits: 2 }
+
+];
+
 // 必修諸外国語の条件
 const foreignLanguageCriteria = {
     requiredCredits: 4,
@@ -373,20 +383,37 @@ function checkEligibility() {
         }
     }
 
-    // キャリア研究調査法の条件を4年生卒業条件に追加
+    // ４年生の卒業条件を追加
     if (year === 4) {
+        // キャリア研究調査法の条件チェック（既存）
         const careerResearchCredits = selectedCourses.reduce((total, course) => {
             const match = course.value.match(/［(\d+)単位］/); // 単位数を抽出
             const credits = match ? parseInt(match[1]) : 0;
             const group = course.getAttribute('data-group'); // グループ名を取得
             return group === requiredElectiveForGraduation.groupName ? total + credits : total; // キャリア研究調査法の単位合計
         }, 0);
-
+    
         if (careerResearchCredits < requiredElectiveForGraduation.requiredCredits) {
             errors.push(
                 `選択必修(キャリア研究調査法)から${requiredElectiveForGraduation.requiredCredits}単位以上必要です。現在は${careerResearchCredits}単位です。`
             );
         }
+    
+        // グループ条件のチェック（新規追加）
+        groupCriteria.forEach(criteria => {
+            const groupCredits = selectedCourses.reduce((total, course) => {
+                const match = course.value.match(/［(\d+)単位］/); // 単位数を抽出
+                const credits = match ? parseInt(match[1]) : 0;
+                const group = course.getAttribute('data-group'); // グループ名を取得
+                return group === criteria.groupName ? total + credits : total; // 指定グループの単位合計
+            }, 0);
+    
+            if (groupCredits < criteria.requiredCredits) {
+                errors.push(
+                    `${criteria.groupName}から${criteria.requiredCredits}単位以上必要です。現在は${groupCredits}単位です。`
+                );
+            }
+        });
     }
 
     // エラーをフィルタリング（空文字を除去）
